@@ -30,16 +30,20 @@ export function Dither() {
       const h = cv.height;
       const img = ctx.createImageData(w, h);
       const d = img.data;
-      const time = reduce ? 0 : t * 0.0006;
+      const time = reduce ? 0 : t * 0.0013;
       const light = document.documentElement.classList.contains("light");
-      const cx = 0.72 + 0.05 * Math.sin(time * 0.7);
-      const cy = 0.05 + 0.04 * Math.cos(time * 0.5);
+      const cx = 0.72 + 0.09 * Math.sin(time * 0.8);
+      const cy = 0.04 + 0.07 * Math.cos(time * 0.55);
       for (let y = 0; y < h; y++) {
         for (let x = 0; x < w; x++) {
           const nx = x / w;
           const ny = y / h;
-          let v = 1 - Math.hypot((nx - cx) * 1.15, ny - cy) * 1.5;
-          v += 0.12 * Math.sin(nx * 8 + time * 2) + 0.1 * Math.sin(ny * 11 - time * 1.6) + 0.06 * Math.sin((nx + ny) * 14 + time * 2.4);
+          let v = 1 - Math.hypot((nx - cx) * 1.15, ny - cy) * 1.45;
+          // flowing, shimmering field so the dither visibly moves
+          v += 0.2 * Math.sin(nx * 7 + time * 2.6)
+             + 0.16 * Math.sin(ny * 10 - time * 2.1)
+             + 0.12 * Math.sin((nx + ny) * 13 + time * 3.2)
+             + 0.08 * Math.sin((nx - ny) * 18 - time * 4);
           v = v < 0 ? 0 : v > 1 ? 1 : v;
           const th = bayer[(y & 3) * 4 + (x & 3)];
           const i = (y * w + x) * 4;
