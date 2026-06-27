@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { SITE } from "@/lib/site";
 import { PageHeader } from "@/components/page-header";
 
@@ -25,6 +26,14 @@ export default function TechnologyPage() {
       />
 
       <section className="max-w-7xl mx-auto px-5 py-20">
+        <div className="grid lg:grid-cols-2 gap-10 items-center mb-12">
+          <div className="reveal relative rounded-2xl overflow-hidden border line aspect-[4/3]">
+            <Image src="/images/reactor.jpg" alt="BioEnergy Fuels catalytic pyrolysis pilot reactor" fill className="object-cover" sizes="(max-width:1024px) 100vw, 50vw" />
+          </div>
+          <div className="reveal relative rounded-2xl overflow-hidden border line aspect-[4/3]">
+            <Image src="/images/catalyst.jpg" alt="The patented bauxite-residue (red mud) catalyst" fill className="object-cover" sizes="(max-width:1024px) 100vw, 50vw" />
+          </div>
+        </div>
         <div className="grid md:grid-cols-2 gap-5">
           {POINTS.map(([t, d]) => (
             <div key={t} className="reveal surface rounded-2xl border line p-7">

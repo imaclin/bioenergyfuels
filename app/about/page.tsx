@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { SITE } from "@/lib/site";
 import { PageHeader } from "@/components/page-header";
 
@@ -24,6 +25,13 @@ export default function AboutPage() {
         title={<>Turning waste into sustainable fuels. Nothing is wasted.</>}
         subtitle="BioEnergy Fuels was created to fill the need for research and engineering in the biofuels industry, lowering carbon emissions and enabling energy independence."
       />
+
+      <section className="max-w-7xl mx-auto px-5 pt-16">
+        <div className="reveal relative rounded-2xl overflow-hidden border line aspect-[21/9]">
+          <Image src="/images/woodland.jpg" alt="Pinyon-juniper woodland, a lignocellulosic biomass feedstock" fill className="object-cover" sizes="100vw" />
+          <span className="absolute bottom-4 left-4 text-xs display font-semibold px-3 py-1.5 rounded-full text-white" style={{ background: "rgba(10,11,12,.6)", backdropFilter: "blur(6px)" }}>Biomass feedstock, ready to become fuel</span>
+        </div>
+      </section>
 
       <section className="max-w-7xl mx-auto px-5 py-20 grid lg:grid-cols-2 gap-12">
         <div className="reveal">

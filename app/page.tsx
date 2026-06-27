@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { SITE } from "@/lib/site";
 import { Dither } from "@/components/dither";
 
@@ -121,8 +122,30 @@ export default function Home() {
         </div>
       </section>
 
-      {/* PROOF */}
+      {/* BUILT & PROVEN */}
       <section className="max-w-7xl mx-auto px-5 py-24">
+        <div className="reveal eyebrow acc mb-4">BUILT &amp; PROVEN</div>
+        <h2 className="reveal display font-bold text-4xl sm:text-5xl mb-12">Real reactors. Real fuel.</h2>
+        <div className="grid lg:grid-cols-3 gap-4">
+          <div className="reveal lg:col-span-2 relative rounded-2xl overflow-hidden border line aspect-[16/11]">
+            <Image src="/images/reactor.jpg" alt="BioEnergy Fuels catalytic pyrolysis pilot reactor at Utah State University" fill className="object-cover" sizes="(max-width:1024px) 100vw, 66vw" />
+            <span className="absolute bottom-4 left-4 text-xs display font-semibold px-3 py-1.5 rounded-full text-white" style={{ background: "rgba(10,11,12,.7)", backdropFilter: "blur(6px)" }}>The pilot reactor at USU</span>
+          </div>
+          <div className="grid grid-rows-2 gap-4">
+            <div className="reveal relative rounded-2xl overflow-hidden border line">
+              <Image src="/images/catalyst.jpg" alt="The red-mud catalyst pellets" fill className="object-cover" sizes="(max-width:1024px) 100vw, 33vw" />
+              <span className="absolute bottom-3 left-3 text-xs display font-semibold px-3 py-1.5 rounded-full text-white" style={{ background: "rgba(10,11,12,.7)" }}>The red-mud catalyst</span>
+            </div>
+            <div className="reveal relative rounded-2xl overflow-hidden border line">
+              <Image src="/images/biooil.jpg" alt="Waste feedstock refined into bio-oil" fill className="object-cover" sizes="(max-width:1024px) 100vw, 33vw" />
+              <span className="absolute bottom-3 left-3 text-xs display font-semibold px-3 py-1.5 rounded-full text-white" style={{ background: "rgba(10,11,12,.7)" }}>Waste in, bio-oil out</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* PROOF */}
+      <section className="max-w-7xl mx-auto px-5 pb-24">
         <div className="grid lg:grid-cols-3 gap-6 items-start">
           <div className="lg:col-span-1">
             <div className="reveal eyebrow acc mb-4">CREDIBILITY</div>
