@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { SITE } from "@/lib/site";
 import { Dither } from "@/components/dither";
+import { BeforeAfter } from "@/components/before-after";
 
 const STATS = [
   { n: "40-50%", l: "longer catalyst lifespan" },
@@ -59,8 +60,24 @@ export default function Home() {
         </div>
       </section>
 
-      {/* TECHNOLOGY */}
+      {/* WASTE -> FUEL SLIDER */}
       <section className="max-w-7xl mx-auto px-5 py-24">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
+          <div>
+            <div className="reveal eyebrow acc mb-3">SEE THE TRANSFORMATION</div>
+            <h2 className="reveal display font-bold text-4xl sm:text-5xl">Drag to turn waste into fuel.</h2>
+          </div>
+          <p className="reveal text-sm max-w-xs" style={{ color: "var(--muted)" }}>
+            The same volume of waste, refined into clean, high-value liquid fuel. Drag the handle.
+          </p>
+        </div>
+        <div className="reveal">
+          <BeforeAfter />
+        </div>
+      </section>
+
+      {/* TECHNOLOGY */}
+      <section className="max-w-7xl mx-auto px-5 py-24 pt-0">
         <div className="grid lg:grid-cols-2 gap-14 items-center">
           <div>
             <div className="reveal eyebrow acc mb-4">THE TECHNOLOGY</div>
