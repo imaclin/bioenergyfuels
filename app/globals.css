@@ -1,26 +1,46 @@
 @import "tailwindcss";
 
+/* ---- Theme tokens (dark default; .light overrides) ---- */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg:#0A0B0C; --surface:#121417; --surface2:#171A1E;
+  --text:#F2F4EF; --muted:#979c92; --line:rgba(255,255,255,.09);
+  --accent:#A3E635; --accentText:#A3E635; --logo:#A3E635;
+}
+html.light {
+  --bg:#F6F7F3; --surface:#FFFFFF; --surface2:#FFFFFF;
+  --text:#0E110C; --muted:#5a6053; --line:rgba(0,0,0,.10);
+  --accent:#A3E635; --accentText:#3f6212; --logo:#4d7c0f;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+html { scroll-behavior:smooth; }
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background:var(--bg); color:var(--text);
+  font-family:var(--font-sans), system-ui, sans-serif;
+  transition:background .3s, color .3s;
+}
+
+/* ---- Brand utilities ---- */
+.display { font-family:var(--font-display), system-ui, sans-serif; letter-spacing:-.02em; }
+.acc { color:var(--accentText); }
+.surface { background:var(--surface); }
+.line { border-color:var(--line); }
+.btn-accent { background:var(--accent); color:#0A0B0C; }
+.eyebrow { font-family:var(--font-display), sans-serif; letter-spacing:.22em; font-size:.7rem; font-weight:600; }
+.glow { background:radial-gradient(60% 50% at 70% 0%, rgba(163,230,53,.16), transparent 70%); }
+
+/* ---- Scroll reveal ---- */
+.reveal { opacity:0; transform:translateY(30px) scale(.985);
+  transition:opacity .8s cubic-bezier(.2,.7,.2,1), transform .8s cubic-bezier(.2,.7,.2,1); }
+.reveal.in { opacity:1; transform:none; }
+
+/* ---- Dither canvas ---- */
+#dither {
+  image-rendering:pixelated; opacity:.9;
+  -webkit-mask-image:radial-gradient(75% 90% at 72% 18%,#000 35%,transparent 78%);
+  mask-image:radial-gradient(75% 90% at 72% 18%,#000 35%,transparent 78%);
+}
+
+::selection { background:var(--accent); color:#0A0B0C; }
+@media (prefers-reduced-motion: reduce) {
+  .reveal { transition:none; opacity:1; transform:none; }
 }
