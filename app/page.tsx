@@ -11,12 +11,12 @@ const STATS = [
 ];
 
 const APPS = [
-  { t: "Used Motor Oil", a: "→ Marine & low-sulfur diesel", d: "Over 200M gallons disposed yearly in the US. We refine it into shipping-grade fuel." },
-  { t: "Waxy Crude", a: "→ Pumpable low-viscosity crude", d: "Cuts the $14-18/barrel premium of heated transport for waxy crudes." },
-  { t: "Lignocellulosic Biomass", a: "→ Jet fuel / SAF", d: "Sawdust and biomass become high-grade Sustainable Aviation Fuel." },
-  { t: "Tire Recycling", a: "→ Refined Bio-Oil", d: "Turns the world's tire-waste problem into liquid fuel feedstock." },
-  { t: "Agricultural Waste", a: "→ Functional Bio-Oils", d: "Plant oils and biomass converted into fuel, pharma, and ag products." },
-  { t: "Wastewater", a: "→ Clean water + carbon credits", d: "Strips contaminants and heavy metals for closed-loop, creditable water." },
+  { t: "Used Motor Oil", a: "→ Marine & low-sulfur diesel", img: "motor-oil", d: "Over 200M gallons disposed yearly in the US. We refine it into shipping-grade fuel." },
+  { t: "Waxy Crude", a: "→ Pumpable low-viscosity crude", img: "waxy-crude", d: "Cuts the $14-18/barrel premium of heated transport for waxy crudes." },
+  { t: "Lignocellulosic Biomass", a: "→ Jet fuel / SAF", img: "biomass-saf", d: "Sawdust and biomass become high-grade Sustainable Aviation Fuel." },
+  { t: "Tire Recycling", a: "→ Refined Bio-Oil", img: "tires", d: "Turns the world's tire-waste problem into liquid fuel feedstock." },
+  { t: "Agricultural Waste", a: "→ Functional Bio-Oils", img: "ag-waste", d: "Plant oils and biomass converted into fuel, pharma, and ag products." },
+  { t: "Wastewater", a: "→ Clean water + carbon credits", img: "wastewater", d: "Strips contaminants and heavy metals for closed-loop, creditable water." },
 ];
 
 export default function Home() {
@@ -112,10 +112,15 @@ export default function Home() {
           <h2 className="reveal display font-bold text-4xl sm:text-5xl mb-12">One platform. Many waste streams.</h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {APPS.map((x) => (
-              <div key={x.t} className="reveal rounded-2xl border line p-6" style={{ background: "var(--bg)" }}>
-                <div className="display font-bold text-lg">{x.t}</div>
-                <div className="acc text-sm font-semibold mt-1">{x.a}</div>
-                <p className="text-sm mt-3" style={{ color: "var(--muted)" }}>{x.d}</p>
+              <div key={x.t} className="reveal rounded-2xl border line overflow-hidden" style={{ background: "var(--bg)" }}>
+                <div className="relative aspect-[3/2]">
+                  <Image src={`/images/apps/${x.img}.jpg`} alt={x.t} fill className="object-cover" sizes="(max-width:1024px) 50vw, 33vw" />
+                </div>
+                <div className="p-6">
+                  <div className="display font-bold text-lg">{x.t}</div>
+                  <div className="acc text-sm font-semibold mt-1">{x.a}</div>
+                  <p className="text-sm mt-3" style={{ color: "var(--muted)" }}>{x.d}</p>
+                </div>
               </div>
             ))}
           </div>

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { SITE } from "@/lib/site";
 import { PageHeader } from "@/components/page-header";
 
@@ -17,7 +18,13 @@ export default function ContactPage() {
         subtitle="Whether you have a feedstock you'd like us to test, you're interested in our proven technology, or you'd like to facilitate a Pyrolysis Mobile Unit (PMU), reach out and we'll get right back to you."
       />
 
-      <section className="max-w-7xl mx-auto px-5 py-20">
+      <section className="max-w-7xl mx-auto px-5 pt-16">
+        <div className="reveal relative rounded-2xl overflow-hidden border line aspect-[21/9]">
+          <Image src="/images/biooil.jpg" alt="Waste feedstock refined into bio-oil" fill className="object-cover" sizes="100vw" />
+        </div>
+      </section>
+
+      <section className="max-w-7xl mx-auto px-5 py-16">
         <div className="grid md:grid-cols-2 gap-5">
           <a href={`mailto:${SITE.email}`} className="reveal surface rounded-2xl border line p-8 group">
             <div className="eyebrow acc mb-3">EMAIL US</div>

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { SITE } from "@/lib/site";
 import { PageHeader } from "@/components/page-header";
 
@@ -38,6 +39,10 @@ export default function ResearchPage() {
       />
 
       <section className="max-w-7xl mx-auto px-5 py-20">
+        <div className="reveal relative rounded-2xl overflow-hidden border line aspect-[21/9] mb-12">
+          <Image src="/images/catalyst.jpg" alt="The patented red-mud catalyst" fill className="object-cover object-center" sizes="100vw" />
+          <span className="absolute bottom-4 left-4 text-xs display font-semibold px-3 py-1.5 rounded-full text-white" style={{ background: "rgba(10,11,12,.7)", backdropFilter: "blur(6px)" }}>The formulated red-mud catalyst</span>
+        </div>
         <div className="reveal eyebrow acc mb-8">CATALYST ADVANTAGES</div>
         <div className="grid sm:grid-cols-2 gap-4">
           {ADVANTAGES.map((a) => (
