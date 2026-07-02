@@ -87,9 +87,9 @@ export default function BrandPage() {
         <div className="reveal eyebrow acc mb-4">01 — THE MARK</div>
         <h2 className="reveal display font-bold text-3xl sm:text-4xl mb-4">The flame.</h2>
         <p className="reveal max-w-2xl mb-10" style={{ color: "var(--muted)" }}>
-          A two-stroke flame: waste going in, energy coming out of the same fire. The mark and the
-          Sora wordmark form the primary lockup. The flame may stand alone once the name is
-          established on the page or object.
+          A flame with a leaf carved out of it as negative space: fire and living matter in one
+          shape, waste becoming clean energy. The mark and the Sora wordmark form the primary
+          lockup. The flame may stand alone once the name is established on the page or object.
         </p>
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
           <div className="reveal"><LogoTile bg="#0A0B0C" flame="#A3E635" textColor="#F2F4EF" label="Primary — lime on Carbon" /></div>

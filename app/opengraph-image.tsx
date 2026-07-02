@@ -1,4 +1,5 @@
 import { ImageResponse } from "next/og";
+import { FLAME_PATH, FLAME_VIEWBOX } from "@/components/logo";
 
 export const alt = "BioEnergy Fuels — Turning waste into wealth";
 export const size = { width: 1200, height: 630 };
@@ -22,9 +23,8 @@ export default function OpengraphImage() {
         }}
       >
         <div style={{ display: "flex", alignItems: "center", marginBottom: 28 }}>
-          <svg viewBox="0 0 70 84" width="64" height="77" fill="#A3E635">
-            <path d="M31 3 C 19 25, 9 39, 22 63 C 27 72, 33 78, 33 78 C 25 60, 29 45, 38 35 C 34 23, 33 12, 31 3 Z" />
-            <path d="M43 17 C 41 33, 51 39, 49 55 C 47 69, 37 79, 37 79 C 53 75, 65 59, 59 39 C 55 27, 47 21, 43 17 Z" />
+          <svg viewBox={FLAME_VIEWBOX} width="58" height="80" fill="#A3E635">
+            <path d={FLAME_PATH} />
           </svg>
           <div style={{ marginLeft: 22, fontSize: 26, letterSpacing: 6, color: "#979c92" }}>
             BIOENERGY FUELS
