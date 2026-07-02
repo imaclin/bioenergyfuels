@@ -42,6 +42,25 @@ export default function TechnologyPage() {
             </div>
           ))}
         </div>
+
+        {/* Real material, up close */}
+        <div className="grid sm:grid-cols-3 gap-4 mt-12">
+          {[
+            ["catalyst-top", "The formulated red-mud catalyst, up close", "98% waste-derived. Regenerated and reused."],
+            ["biomass", "Lignocellulosic biomass feedstock", "Wood shavings and sawdust, bound for jet fuel."],
+            ["vegoil", "One catalytic run, before and after", "Vegetable oil deoxygenated at 400°C in 30 minutes."],
+          ].map(([img, t, d]) => (
+            <figure key={img} className="reveal rounded-2xl overflow-hidden border line surface">
+              <div className="relative aspect-[4/5]">
+                <Image src={`/images/lab/${img}.webp`} alt={t} fill className="object-cover" sizes="(max-width:640px) 100vw, 33vw" />
+              </div>
+              <figcaption className="p-5">
+                <div className="display font-semibold text-sm">{t}</div>
+                <p className="text-xs mt-1" style={{ color: "var(--muted)" }}>{d}</p>
+              </figcaption>
+            </figure>
+          ))}
+        </div>
       </section>
 
       <section className="surface border-y line">

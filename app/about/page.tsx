@@ -53,19 +53,36 @@ export default function AboutPage() {
       <section className="surface border-y line">
         <div className="max-w-7xl mx-auto px-5 py-20">
           <div className="reveal eyebrow acc mb-8">OUR TEAM</div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {TEAM.map(([name, role]) => (
-              <div key={name} className="reveal rounded-2xl border line p-6" style={{ background: "var(--bg)" }}>
-                <div className="display font-bold text-lg">{name}</div>
-                <div className="acc text-sm font-semibold mt-1">{role}</div>
+          <div className="grid lg:grid-cols-5 gap-4 items-start">
+            <div className="reveal lg:col-span-2 rounded-2xl border line overflow-hidden" style={{ background: "var(--bg)" }}>
+              <div className="relative aspect-[3/4]">
+                <Image
+                  src="/images/lab/agblevor.webp"
+                  alt="Dr. Foster Agblevor at the catalytic pyrolysis reactor, Utah State University"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width:1024px) 100vw, 40vw"
+                />
               </div>
-            ))}
+              <div className="p-6">
+                <div className="display font-bold text-lg">Dr. Foster Agblevor</div>
+                <div className="acc text-sm font-semibold mt-1">Chief Technical Consultant</div>
+                <p className="text-sm mt-3" style={{ color: "var(--muted)" }}>
+                  Named among the World&apos;s Top 2% Scientists (Stanford, 2021). Fulbright Scholar
+                  (Finland, 2015) and multiple-time researcher of the year. PhD in Chemical
+                  Engineering, University of Toronto. Photographed at the USU reactor.
+                </p>
+              </div>
+            </div>
+            <div className="lg:col-span-3 grid sm:grid-cols-2 gap-4">
+              {TEAM.filter(([name]) => name !== "Dr. Foster Agblevor").map(([name, role]) => (
+                <div key={name} className="reveal rounded-2xl border line p-6" style={{ background: "var(--bg)" }}>
+                  <div className="display font-bold text-lg">{name}</div>
+                  <div className="acc text-sm font-semibold mt-1">{role}</div>
+                </div>
+              ))}
+            </div>
           </div>
-          <p className="reveal mt-8 text-sm" style={{ color: "var(--muted)" }}>
-            Dr. Foster Agblevor was named among the World&apos;s Top 2% Scientists (Stanford, 2021), is a Fulbright
-            Scholar (Finland, 2015), and a multiple-time researcher of the year, holding a PhD in Chemical Engineering
-            from the University of Toronto.
-          </p>
         </div>
       </section>
 

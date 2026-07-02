@@ -28,6 +28,9 @@ body {
 .eyebrow { font-family:var(--font-display), sans-serif; letter-spacing:.22em; font-size:.7rem; font-weight:600; }
 .glow { background:radial-gradient(60% 50% at 70% 0%, rgba(163,230,53,.16), transparent 70%); }
 
+/* Light "lab" band — stays light in both themes, like a lit vitrine */
+.lab-band { background:#EFF0EB; color:#0E110C; }
+
 /* ---- Scroll reveal ---- */
 .reveal { opacity:0; transform:translateY(30px) scale(.985);
   transition:opacity .8s cubic-bezier(.2,.7,.2,1), transform .8s cubic-bezier(.2,.7,.2,1); }

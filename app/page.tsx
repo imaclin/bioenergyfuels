@@ -3,6 +3,35 @@ import Image from "next/image";
 import { SITE } from "@/lib/site";
 import { Dither } from "@/components/dither";
 import { BeforeAfter } from "@/components/before-after";
+import { MetalsChart } from "@/components/metals-chart";
+
+// Real specimen photography from the lab — same studio, same glassware.
+const SPECIMENS = [
+  {
+    img: "crude-vs-refined",
+    t: "Used motor oil",
+    a: "→ Refined fuel oil",
+    d: "Black waste crude in, golden low-sulfur fuel out. One catalytic pass.",
+  },
+  {
+    img: "tires",
+    t: "Used tires",
+    a: "→ Bio-crude oil",
+    d: "Shredded tire waste converted into refinable bio-crude.",
+  },
+  {
+    img: "wastewater",
+    t: "Fracking wastewater",
+    a: "→ Clean effluent",
+    d: "Contaminants and heavy metals stripped to near-clear water.",
+  },
+  {
+    img: "vegoil",
+    t: "Vegetable oil",
+    a: "→ Deoxygenated bio-crude",
+    d: "Catalytic run at 400°C for 30 minutes. Labels straight off the vials.",
+  },
+];
 
 const STATS = [
   { n: "40-50%", l: "longer catalyst lifespan" },
@@ -76,8 +105,43 @@ export default function Home() {
         </div>
       </section>
 
+      {/* STRAIGHT FROM THE LAB — real specimen photography, light band */}
+      <section className="lab-band border-y line">
+        <div className="max-w-7xl mx-auto px-5 py-24">
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-12">
+            <div>
+              <div className="reveal eyebrow mb-3" style={{ color: "#3f6212" }}>NO RENDERS. NO MOCKUPS.</div>
+              <h2 className="reveal display font-bold text-4xl sm:text-5xl">Straight from the lab.</h2>
+            </div>
+            <p className="reveal text-sm max-w-xs" style={{ color: "#5a6053" }}>
+              Every sample below is a real result from our catalytic pyrolysis platform, photographed as-is.
+            </p>
+          </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {SPECIMENS.map((s) => (
+              <figure key={s.img} className="reveal rounded-2xl overflow-hidden bg-white border" style={{ borderColor: "rgba(0,0,0,.08)" }}>
+                <div className="relative aspect-[3/4]">
+                  <Image
+                    src={`/images/lab/${s.img}.webp`}
+                    alt={`${s.t} ${s.a}`}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width:640px) 100vw, (max-width:1024px) 50vw, 25vw"
+                  />
+                </div>
+                <figcaption className="p-5">
+                  <div className="display font-bold" style={{ color: "#0E110C" }}>{s.t}</div>
+                  <div className="text-sm font-semibold mt-0.5" style={{ color: "#3f6212" }}>{s.a}</div>
+                  <p className="text-sm mt-2" style={{ color: "#5a6053" }}>{s.d}</p>
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* TECHNOLOGY */}
-      <section className="max-w-7xl mx-auto px-5 py-24 pt-0">
+      <section className="max-w-7xl mx-auto px-5 py-24">
         <div className="grid lg:grid-cols-2 gap-14 items-center">
           <div>
             <div className="reveal eyebrow acc mb-4">THE TECHNOLOGY</div>
@@ -118,6 +182,34 @@ export default function Home() {
             <p className="text-xs mt-6 pt-5 border-t line" style={{ color: "var(--muted)" }}>
               Closed loop: gases reheat the reactor, catalyst regenerates, nothing is wasted.
             </p>
+          </div>
+        </div>
+      </section>
+
+      {/* MEASURED, NOT PROMISED — real published processing data */}
+      <section className="max-w-7xl mx-auto px-5 pb-24">
+        <div className="grid lg:grid-cols-5 gap-12 items-start">
+          <div className="lg:col-span-2 lg:sticky lg:top-28">
+            <div className="reveal eyebrow acc mb-4">REAL DATA</div>
+            <h2 className="reveal display font-bold text-4xl sm:text-5xl leading-tight">
+              Measured,
+              <br />
+              not promised.
+            </h2>
+            <p className="reveal mt-6 text-lg leading-relaxed" style={{ color: "var(--muted)" }}>
+              Used lube oil, one pass through our catalyst. The metals that make waste oil
+              unusable, stripped out and measured element by element.
+            </p>
+            <p className="reveal mt-4 text-xs" style={{ color: "var(--muted)" }}>
+              Published BioEnergy Fuels / Utah State University processing data.
+            </p>
+          </div>
+          <div className="reveal lg:col-span-3 surface rounded-3xl border line p-6 sm:p-9">
+            <div className="flex items-baseline justify-between mb-7">
+              <div className="display font-bold text-lg">Metals removed</div>
+              <div className="text-xs" style={{ color: "var(--muted)" }}>raw → processed</div>
+            </div>
+            <MetalsChart />
           </div>
         </div>
       </section>
@@ -175,9 +267,26 @@ export default function Home() {
             <a href={`mailto:${SITE.email}`} className="reveal inline-block mt-6 btn-accent display font-semibold px-6 py-3 rounded-full">Email us</a>
           </div>
           <div className="lg:col-span-2 grid sm:grid-cols-2 gap-4">
+            <div className="reveal sm:row-span-3 surface rounded-2xl border line overflow-hidden flex flex-col">
+              <div className="relative flex-1 min-h-[22rem]">
+                <Image
+                  src="/images/lab/agblevor.webp"
+                  alt="Dr. Foster Agblevor at the catalytic pyrolysis reactor, Utah State University"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width:640px) 100vw, 33vw"
+                />
+              </div>
+              <div className="p-6">
+                <div className="display font-bold">Dr. Foster Agblevor</div>
+                <p className="text-sm mt-2" style={{ color: "var(--muted)" }}>
+                  Chief Technical Consultant, at the reactor. Named among the World&apos;s Top 2%
+                  Scientists (Stanford, 2021). Fulbright Scholar.
+                </p>
+              </div>
+            </div>
             {[
               ["USU Partnership", "Funded the catalytic pyrolysis research since 2019; now holds exclusive rights to the patented technology."],
-              ["Dr. Foster Agblevor", "Chief Technical Consultant. Named among the World's Top 2% Scientists (Stanford, 2021), Fulbright Scholar."],
               ["Peer-Reviewed Research", "Published work spanning waste tires, motor oil, wastewater sludge, biomass, and red-mud catalysts."],
               ["Patented Catalyst", "98% waste-derived, regenerable, and metal-poison resistant, cheaper and longer-lived than the standard."],
             ].map(([t, d]) => (
