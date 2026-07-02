@@ -1,8 +1,8 @@
 export const SITE = {
   name: "BioEnergy Fuels",
-  domain: "bioenergyfuelsllc.com",
-  url: "https://www.bioenergyfuelsllc.com",
-  email: "info@bioenergyfuelsllc.com",
+  domain: "bioenergyfuels.org",
+  url: "https://bioenergyfuels.org",
+  email: "info@bioenergyfuels.org",
   phone: "+1 (432) 250-0515",
   phoneHref: "+14322500515",
   tagline: "Turning waste into wealth. Nothing is wasted.",
