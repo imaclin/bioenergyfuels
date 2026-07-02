@@ -262,9 +262,10 @@ export default function BrandPage() {
           <div className="reveal eyebrow acc mb-4">06 — IN PRACTICE</div>
           <h2 className="reveal display font-bold text-3xl sm:text-4xl mb-4">The business card.</h2>
           <p className="reveal max-w-2xl mb-10" style={{ color: "var(--muted)" }}>
-            Two approved looks. <span className="font-semibold" style={{ color: "var(--text)" }}>Stealth</span>: all-Carbon,
-            blind-embossed or spot-gloss flame, for leadership. <span className="font-semibold" style={{ color: "var(--text)" }}>Signal</span>:
-            Carbon front with lime accents, lime back, for the field. Standard 3.5&Prime; × 2&Prime;, matte soft-touch stock.
+            Three editions, one system. <span className="font-semibold" style={{ color: "var(--text)" }}>Signal</span> (Carbon
+            + lime) is the default. <span className="font-semibold" style={{ color: "var(--text)" }}>Paper</span> is the quiet,
+            editorial cut. <span className="font-semibold" style={{ color: "var(--text)" }}>Bold</span> is loud lime for the field.
+            All standard 3.5&Prime; × 2&Prime;, matte soft-touch 32pt stock, spot gloss or emboss on the flame.
           </p>
           <div className="grid md:grid-cols-3 gap-6 max-w-5xl">
             {/* Stealth front */}
@@ -309,6 +310,117 @@ export default function BrandPage() {
                 </div>
               </div>
               <div className="text-xs mt-2" style={{ color: "var(--muted)" }}>Signal back — inverse lockup on lime</div>
+            </div>
+          </div>
+
+          {/* Paper edition (light stock) */}
+          <div className="reveal mt-14 mb-5 flex items-center gap-3">
+            <span className="eyebrow" style={{ color: "var(--muted)" }}>PAPER EDITION</span>
+            <span className="text-sm" style={{ color: "var(--muted)" }}>— warm off-white stock, olive flame. Quieter, editorial.</span>
+          </div>
+          <div className="grid md:grid-cols-3 gap-6 max-w-5xl">
+            {/* Paper front */}
+            <div className="reveal">
+              <div className="rounded-xl aspect-[1.75] p-5 flex flex-col justify-between shadow-2xl" style={{ background: "#F6F7F3", border: "1px solid rgba(0,0,0,.08)", "--logo": "#4D7C0F" } as CSSProperties}>
+                <div className="flex items-start justify-between">
+                  <FlameMark size={22} />
+                  <div className="text-right">
+                    <div className="display font-bold text-[11px]" style={{ color: "#0E110C" }}>Dr. Foster Agblevor</div>
+                    <div className="text-[8px] tracking-[.15em] mt-0.5" style={{ color: "#3F6212" }}>CHIEF TECHNICAL CONSULTANT</div>
+                  </div>
+                </div>
+                <div className="text-[8px] leading-relaxed" style={{ color: "#5a6053" }}>
+                  {SITE.email}
+                  <br />
+                  {SITE.phone} · {SITE.domain}
+                </div>
+              </div>
+              <div className="text-xs mt-2" style={{ color: "var(--muted)" }}>Paper front — olive on off-white</div>
+            </div>
+            {/* Paper back */}
+            <div className="reveal">
+              <div className="rounded-xl aspect-[1.75] grid place-items-center text-center shadow-2xl px-6" style={{ background: "#F6F7F3", border: "1px solid rgba(0,0,0,.08)", "--logo": "#4D7C0F" } as CSSProperties}>
+                <div>
+                  <div className="flex items-center justify-center gap-2.5">
+                    <FlameMark size={22} />
+                    <span className="display font-bold text-[13px] tracking-tight leading-none" style={{ color: "#0E110C" }}>
+                      BIOENERGY
+                      <br />
+                      <span className="text-[9px] tracking-[.2em]" style={{ color: "#5a6053" }}>FUELS</span>
+                    </span>
+                  </div>
+                  <div className="text-[8px] tracking-[.18em] mt-3" style={{ color: "#3F6212" }}>TURNING WASTE INTO WEALTH</div>
+                </div>
+              </div>
+              <div className="text-xs mt-2" style={{ color: "var(--muted)" }}>Paper back — centered lockup + tagline</div>
+            </div>
+            {/* Carbon contact-forward back */}
+            <div className="reveal">
+              <div className="rounded-xl aspect-[1.75] p-5 flex flex-col justify-between shadow-2xl" style={{ background: "#0A0B0C", border: "1px solid rgba(255,255,255,.07)", "--logo": "#A3E635" } as CSSProperties}>
+                <FlameMark size={20} />
+                <div>
+                  <div className="display font-bold text-[15px] leading-[1.05]" style={{ color: "#F2F4EF" }}>
+                    Have a feedstock?<br />Let&apos;s test it.
+                  </div>
+                  <div className="text-[8px] mt-2" style={{ color: "#A3E635" }}>{SITE.domain}</div>
+                </div>
+              </div>
+              <div className="text-xs mt-2" style={{ color: "var(--muted)" }}>Carbon back — one line, one CTA</div>
+            </div>
+          </div>
+
+          {/* Bold edition (lime stock) */}
+          <div className="reveal mt-14 mb-5 flex items-center gap-3">
+            <span className="eyebrow" style={{ color: "var(--muted)" }}>BOLD EDITION</span>
+            <span className="text-sm" style={{ color: "var(--muted)" }}>— full lime stock. Loud, for the field and events.</span>
+          </div>
+          <div className="grid md:grid-cols-3 gap-6 max-w-5xl">
+            {/* Lime front */}
+            <div className="reveal">
+              <div className="rounded-xl aspect-[1.75] p-5 flex flex-col justify-between shadow-2xl" style={{ background: "#A3E635", "--logo": "#0A0B0C" } as CSSProperties}>
+                <div className="flex items-start justify-between">
+                  <FlameMark size={22} />
+                  <div className="text-right">
+                    <div className="display font-bold text-[11px]" style={{ color: "#0A0B0C" }}>Leah Klein</div>
+                    <div className="text-[8px] tracking-[.15em] mt-0.5" style={{ color: "#1f300a" }}>VICE PRESIDENT</div>
+                  </div>
+                </div>
+                <div className="text-[8px] leading-relaxed" style={{ color: "rgba(10,11,12,.7)" }}>
+                  {SITE.email}
+                  <br />
+                  {SITE.phone} · {SITE.domain}
+                </div>
+              </div>
+              <div className="text-xs mt-2" style={{ color: "var(--muted)" }}>Lime front — carbon on lime</div>
+            </div>
+            {/* Lime vertical-rule variant */}
+            <div className="reveal">
+              <div className="rounded-xl aspect-[1.75] flex overflow-hidden shadow-2xl" style={{ background: "#0A0B0C", border: "1px solid rgba(255,255,255,.07)" }}>
+                <div className="w-2" style={{ background: "#A3E635" }} />
+                <div className="flex-1 p-5 flex flex-col justify-between" style={{ "--logo": "#A3E635" } as CSSProperties}>
+                  <div className="flex items-start justify-between">
+                    <FlameMark size={20} />
+                    <div className="text-right">
+                      <div className="display font-bold text-[11px]" style={{ color: "#F2F4EF" }}>Sean Thompson</div>
+                      <div className="text-[8px] tracking-[.15em] mt-0.5" style={{ color: "#A3E635" }}>CHIEF OPERATIONS MANAGER</div>
+                    </div>
+                  </div>
+                  <div className="text-[8px] leading-relaxed" style={{ color: "#979C92" }}>
+                    {SITE.email} · {SITE.phone}
+                  </div>
+                </div>
+              </div>
+              <div className="text-xs mt-2" style={{ color: "var(--muted)" }}>Carbon + lime edge rule</div>
+            </div>
+            {/* Mono emboss back (stealth pair) */}
+            <div className="reveal">
+              <div className="rounded-xl aspect-[1.75] grid place-items-center shadow-2xl" style={{ background: "#0A0B0C", border: "1px solid rgba(255,255,255,.07)" }}>
+                <div className="grid place-items-center gap-2" style={{ "--logo": "#1A1C1E" } as CSSProperties}>
+                  <FlameMark size={30} />
+                  <span className="text-[8px] tracking-[.25em]" style={{ color: "#26292c" }}>BIOENERGY FUELS</span>
+                </div>
+              </div>
+              <div className="text-xs mt-2" style={{ color: "var(--muted)" }}>Stealth back — tonal emboss, mark only</div>
             </div>
           </div>
 
