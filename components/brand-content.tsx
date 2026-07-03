@@ -115,15 +115,19 @@ export function BrandContent() {
   const [accentKey, setAccentKey] = useState("lime");
   const A = ACCENTS.find((a) => a.key === accentKey)!;
 
+  // Stable `id` per row so switching accent updates the swatch in place
+  // rather than remounting it (a remount would restart the scroll-reveal
+  // fade from opacity:0 and, since the observer has already fired, leave the
+  // accent + deep tiles invisible).
   const coreColors = [
-    { name: "Carbon", hex: "#0A0B0C", note: "Primary background. Matte, near-black. Never pure #000.", text: "#F2F4EF" },
-    { name: A.name, hex: A.hex, note: "The accent. Data, CTAs, the flame. Use sparingly: if everything glows, nothing does.", text: A.ink },
-    { name: "Off-White", hex: "#F2F4EF", note: "Text on dark. Warm, never clinical white.", text: "#0A0B0C" },
-    { name: "Surface", hex: "#121417", note: "Cards and panels on Carbon.", text: "#F2F4EF" },
-    { name: "Ash", hex: "#979C92", note: "Muted / secondary text on dark.", text: "#0A0B0C" },
-    { name: A.deepName, hex: A.deep, note: `The accent on light backgrounds, where ${A.short} needs more contrast.`, text: "#F2F4EF" },
-    { name: "Paper", hex: "#F6F7F3", note: "Light-theme background.", text: "#0E110C" },
-    { name: "Lab", hex: "#EFF0EB", note: "The light 'vitrine' band behind specimen photography. Stays light in both themes.", text: "#0E110C" },
+    { id: "carbon", name: "Carbon", hex: "#0A0B0C", note: "Primary background. Matte, near-black. Never pure #000.", text: "#F2F4EF" },
+    { id: "accent", name: A.name, hex: A.hex, note: "The accent. Data, CTAs, the flame. Use sparingly: if everything glows, nothing does.", text: A.ink },
+    { id: "offwhite", name: "Off-White", hex: "#F2F4EF", note: "Text on dark. Warm, never clinical white.", text: "#0A0B0C" },
+    { id: "surface", name: "Surface", hex: "#121417", note: "Cards and panels on Carbon.", text: "#F2F4EF" },
+    { id: "ash", name: "Ash", hex: "#979C92", note: "Muted / secondary text on dark.", text: "#0A0B0C" },
+    { id: "deep", name: A.deepName, hex: A.deep, note: `The accent on light backgrounds, where ${A.short} needs more contrast.`, text: "#F2F4EF" },
+    { id: "paper", name: "Paper", hex: "#F6F7F3", note: "Light-theme background.", text: "#0E110C" },
+    { id: "lab", name: "Lab", hex: "#EFF0EB", note: "The light 'vitrine' band behind specimen photography. Stays light in both themes.", text: "#0E110C" },
   ];
 
   const logoMisuse = [
@@ -221,7 +225,7 @@ export function BrandContent() {
           </p>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {coreColors.map((c) => (
-              <div key={c.name} className="reveal rounded-2xl overflow-hidden border line">
+              <div key={c.id} className="reveal rounded-2xl overflow-hidden border line">
                 <div className="h-28 p-4 flex flex-col justify-between" style={{ background: c.hex, color: c.text }}>
                   <span className="display font-bold">{c.name}</span>
                   <span className="font-mono text-xs tracking-wide">{c.hex}</span>
