@@ -1,13 +1,15 @@
-import type { Metadata } from "next";
 import Image from "next/image";
 import { SITE } from "@/lib/site";
+import { pageMeta, breadcrumbSchema, itemListSchema } from "@/lib/seo";
 import { PageHeader } from "@/components/page-header";
+import { JsonLd } from "@/components/json-ld";
 
-export const metadata: Metadata = {
+export const metadata = pageMeta({
   title: "Applications",
   description:
     "One catalytic pyrolysis platform, many waste streams: used motor oil, waxy crude, tires, agricultural and lignocellulosic biomass, and wastewater, all converted into high-value fuels.",
-};
+  path: "/applications",
+});
 
 const APPS = [
   { t: "Used Motor Oil", a: "Marine & low-sulfur diesel", img: "motor-oil", d: "Over 200 million gallons of used lubrication oil are disposed every year in the US. We refine it into high-grade marine diesel and bunker fuel for large-scale shipping and mining, and can process bunker fuel further into gasoline or diesel." },
@@ -21,6 +23,15 @@ const APPS = [
 export default function ApplicationsPage() {
   return (
     <>
+      <JsonLd
+        data={[
+          breadcrumbSchema("Applications", "/applications"),
+          itemListSchema(
+            "BioEnergy Fuels applications",
+            APPS.map((x) => `${x.t} → ${x.a}`)
+          ),
+        ]}
+      />
       <PageHeader
         eyebrow="APPLICATIONS"
         title={<>One platform. Many waste streams.</>}

@@ -1,17 +1,20 @@
-import type { Metadata } from "next";
 import Image from "next/image";
 import { SITE } from "@/lib/site";
+import { pageMeta, breadcrumbSchema } from "@/lib/seo";
 import { PageHeader } from "@/components/page-header";
+import { JsonLd } from "@/components/json-ld";
 
-export const metadata: Metadata = {
+export const metadata = pageMeta({
   title: "Contact",
   description:
     "Have a feedstock to test, want to use our technology, or facilitate a Pyrolysis Mobile Unit (PMU)? Email BioEnergy Fuels and we'll reach out shortly.",
-};
+  path: "/contact",
+});
 
 export default function ContactPage() {
   return (
     <>
+      <JsonLd data={breadcrumbSchema("Contact", "/contact")} />
       <PageHeader
         eyebrow="CONTACT"
         title={<>Let&apos;s turn your waste into wealth.</>}

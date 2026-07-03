@@ -1,13 +1,15 @@
-import type { Metadata } from "next";
 import Image from "next/image";
 import { SITE } from "@/lib/site";
+import { pageMeta, breadcrumbSchema, itemListSchema } from "@/lib/seo";
 import { PageHeader } from "@/components/page-header";
+import { JsonLd } from "@/components/json-ld";
 
-export const metadata: Metadata = {
+export const metadata = pageMeta({
   title: "Research",
   description:
     "Peer-reviewed research behind BioEnergy Fuels: catalyst performance, used motor oil processing, and waste-to-fuel applications using a formulated red-mud catalyst.",
-};
+  path: "/research",
+});
 
 const ADVANTAGES = [
   "Catalyst lifespan is 40-50% longer than any other catalyst tested.",
@@ -49,6 +51,12 @@ const PAPERS = [
 export default function ResearchPage() {
   return (
     <>
+      <JsonLd
+        data={[
+          breadcrumbSchema("Research", "/research"),
+          itemListSchema("BioEnergy Fuels peer-reviewed publications", PAPERS),
+        ]}
+      />
       <PageHeader
         eyebrow="RESEARCH"
         title={<>Backed by real, published science.</>}

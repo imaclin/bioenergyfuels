@@ -1,13 +1,15 @@
-import type { Metadata } from "next";
 import Image from "next/image";
 import { SITE } from "@/lib/site";
+import { pageMeta, breadcrumbSchema } from "@/lib/seo";
 import { PageHeader } from "@/components/page-header";
+import { JsonLd } from "@/components/json-ld";
 
-export const metadata: Metadata = {
+export const metadata = pageMeta({
   title: "About",
   description:
     "BioEnergy Fuels was created to fill the need for research and engineering in biofuels, providing waste valorization while producing sustainable fuels.",
-};
+  path: "/about",
+});
 
 const TEAM = [
   ["Michael Thompson", "Chief Executive Officer / Owner"],
@@ -20,6 +22,7 @@ const TEAM = [
 export default function AboutPage() {
   return (
     <>
+      <JsonLd data={breadcrumbSchema("About", "/about")} />
       <PageHeader
         eyebrow="ABOUT"
         title={<>Turning waste into sustainable fuels. Nothing is wasted.</>}

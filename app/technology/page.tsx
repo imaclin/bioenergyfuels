@@ -1,13 +1,15 @@
-import type { Metadata } from "next";
 import Image from "next/image";
 import { SITE } from "@/lib/site";
+import { pageMeta, breadcrumbSchema } from "@/lib/seo";
 import { PageHeader } from "@/components/page-header";
+import { JsonLd } from "@/components/json-ld";
 
-export const metadata: Metadata = {
+export const metadata = pageMeta({
   title: "Technology",
   description:
     "Catalytic pyrolysis powered by a patented bauxite-residue (red mud) catalyst. Higher yields, lower cost, and a closed-loop process that wastes nothing.",
-};
+  path: "/technology",
+});
 
 const POINTS = [
   ["Catalytic fast pyrolysis", "Extreme heat concentrates the energy of feedstocks into usable bio-crude oils. Our patented process boosts efficiency with an innovative bauxite-residue catalyst, and no byproduct is wasted: gases reheat the reactor and solids like biochar are captured for other industries."],
@@ -19,6 +21,7 @@ const POINTS = [
 export default function TechnologyPage() {
   return (
     <>
+      <JsonLd data={breadcrumbSchema("Technology", "/technology")} />
       <PageHeader
         eyebrow="THE TECHNOLOGY"
         title={<>The catalyst is the breakthrough.</>}
