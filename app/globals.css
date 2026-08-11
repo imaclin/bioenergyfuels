@@ -1,15 +1,22 @@
 @import "tailwindcss";
 
-/* ---- Theme tokens (dark default; .light overrides) ---- */
+/* ---- Theme tokens (light is now the default; :root carries the dark set) ----
+   The accent is Cobalt. Unlike the old lime it is a DARK colour, so it cannot
+   carry dark text and it cannot be read as accent text on carbon. Two extra
+   tokens handle that:
+     --accentInk   text/marks sitting ON an accent fill (6.7:1 on cobalt)
+     --accentText  accent-coloured TEXT: a lighter tint on dark (#3D8FDB is
+                   5.8:1 on carbon, where cobalt itself is only 2.7:1) and the
+                   deep variant on light (9.8:1 on paper). */
 :root {
   --bg:#0A0B0C; --surface:#121417; --surface2:#171A1E;
   --text:#F2F4EF; --muted:#979c92; --line:rgba(255,255,255,.09);
-  --accent:#A3E635; --accentText:#A3E635; --logo:#A3E635;
+  --accent:#0054A9; --accentInk:#F2F4EF; --accentText:#3D8FDB; --logo:#3D8FDB;
 }
 html.light {
   --bg:#F6F7F3; --surface:#FFFFFF; --surface2:#FFFFFF;
   --text:#0E110C; --muted:#5a6053; --line:rgba(0,0,0,.10);
-  --accent:#A3E635; --accentText:#3f6212; --logo:#4d7c0f;
+  --accent:#0054A9; --accentInk:#F2F4EF; --accentText:#003E7E; --logo:#0054A9;
 }
 
 html { scroll-behavior:smooth; }
@@ -24,9 +31,9 @@ body {
 .acc { color:var(--accentText); }
 .surface { background:var(--surface); }
 .line { border-color:var(--line); }
-.btn-accent { background:var(--accent); color:#0A0B0C; }
+.btn-accent { background:var(--accent); color:var(--accentInk); }
 .eyebrow { font-family:var(--font-display), sans-serif; letter-spacing:.22em; font-size:.7rem; font-weight:600; }
-.glow { background:radial-gradient(60% 50% at 70% 0%, rgba(163,230,53,.16), transparent 70%); }
+.glow { background:radial-gradient(60% 50% at 70% 0%, rgba(61,143,219,.18), transparent 70%); }
 
 /* Light "lab" band — stays light in both themes, like a lit vitrine */
 .lab-band { background:#EFF0EB; color:#0E110C; }
@@ -43,7 +50,7 @@ body {
   mask-image:radial-gradient(75% 90% at 72% 18%,#000 35%,transparent 78%);
 }
 
-::selection { background:var(--accent); color:#0A0B0C; }
+::selection { background:var(--accent); color:var(--accentInk); }
 @media (prefers-reduced-motion: reduce) {
   .reveal { transition:none; opacity:1; transform:none; }
 }

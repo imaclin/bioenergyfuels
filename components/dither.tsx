@@ -48,14 +48,17 @@ export function Dither() {
           const th = bayer[(y & 3) * 4 + (x & 3)];
           const i = (y * w + x) * 4;
           let r = 0, g = 0, b = 0, a = 255;
+          // Cobalt ramps. Two palettes because the field has to hold up on
+          // paper and on carbon: mid-tones on light, a bright tint plus deep
+          // shadow tones on dark.
           if (light) {
-            if (v > th + 0.34) { r = 132; g = 204; b = 22; }
-            else if (v > th + 0.02) { r = 176; g = 214; b = 120; }
+            if (v > th + 0.34) { r = 46; g = 127; b = 212; }
+            else if (v > th + 0.02) { r = 150; g = 190; b = 230; }
             else a = 0;
           } else {
-            if (v > th + 0.46) { r = 163; g = 230; b = 53; }
-            else if (v > th + 0.12) { r = 64; g = 120; b = 24; }
-            else if (v > th - 0.22) { r = 20; g = 27; b = 12; }
+            if (v > th + 0.46) { r = 61; g = 143; b = 219; }
+            else if (v > th + 0.12) { r = 16; g = 64; b = 110; }
+            else if (v > th - 0.22) { r = 12; g = 18; b = 28; }
             else a = 0;
           }
           d[i] = r; d[i + 1] = g; d[i + 2] = b; d[i + 3] = a;

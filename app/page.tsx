@@ -110,7 +110,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-5 py-24">
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-12">
             <div>
-              <div className="reveal eyebrow mb-3" style={{ color: "#3f6212" }}>NO RENDERS. NO MOCKUPS.</div>
+              <div className="reveal eyebrow mb-3" style={{ color: "#003E7E" }}>NO RENDERS. NO MOCKUPS.</div>
               <h2 className="reveal display font-bold text-4xl sm:text-5xl">Straight from the lab.</h2>
             </div>
             <p className="reveal text-sm max-w-xs" style={{ color: "#5a6053" }}>
@@ -131,7 +131,7 @@ export default function Home() {
                 </div>
                 <figcaption className="p-5">
                   <div className="display font-bold" style={{ color: "#0E110C" }}>{s.t}</div>
-                  <div className="text-sm font-semibold mt-0.5" style={{ color: "#3f6212" }}>{s.a}</div>
+                  <div className="text-sm font-semibold mt-0.5" style={{ color: "#003E7E" }}>{s.a}</div>
                   <p className="text-sm mt-2" style={{ color: "#5a6053" }}>{s.d}</p>
                 </figcaption>
               </figure>

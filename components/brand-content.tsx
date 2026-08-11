@@ -112,7 +112,8 @@ function LogoTile({ bg, flame, textColor, label, border }: { bg: string; flame: 
 /* ---------------------------------- page ---------------------------------- */
 
 export function BrandContent() {
-  const [accentKey, setAccentKey] = useState("lime");
+  // Cobalt is the live brand accent now, so the guideline page opens on it.
+  const [accentKey, setAccentKey] = useState("cobalt");
   const A = ACCENTS.find((a) => a.key === accentKey)!;
 
   // Stable `id` per row so switching accent updates the swatch in place

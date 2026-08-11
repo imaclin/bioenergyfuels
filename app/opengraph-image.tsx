@@ -18,12 +18,12 @@ export default function OpengraphImage() {
           padding: "80px",
           background: "#0A0B0C",
           backgroundImage:
-            "radial-gradient(900px 600px at 80% 0%, rgba(163,230,53,0.22), transparent 60%)",
+            "radial-gradient(900px 600px at 80% 0%, rgba(61,143,219,0.22), transparent 60%)",
           color: "#F2F4EF",
         }}
       >
         <div style={{ display: "flex", alignItems: "center", marginBottom: 28 }}>
-          <svg viewBox={FLAME_VIEWBOX} width="58" height="80" fill="#A3E635">
+          <svg viewBox={FLAME_VIEWBOX} width="58" height="80" fill="#3D8FDB">
             <path d={FLAME_PATH} />
           </svg>
           <div style={{ marginLeft: 22, fontSize: 26, letterSpacing: 6, color: "#979c92" }}>
@@ -32,7 +32,7 @@ export default function OpengraphImage() {
         </div>
         <div style={{ display: "flex", gap: 22, fontSize: 88, fontWeight: 800, lineHeight: 1.02, letterSpacing: -2 }}>
           <span>We turn</span>
-          <span style={{ color: "#A3E635" }}>waste</span>
+          <span style={{ color: "#3D8FDB" }}>waste</span>
         </div>
         <div style={{ fontSize: 88, fontWeight: 800, lineHeight: 1.02, letterSpacing: -2 }}>into fuel.</div>
         <div style={{ marginTop: 30, fontSize: 30, color: "#979c92", maxWidth: 760 }}>

@@ -74,13 +74,13 @@ export function BeforeAfter() {
       <span className="absolute top-4 left-4 sm:top-6 sm:left-6 display font-bold text-lg sm:text-2xl text-white" style={{ textShadow: "0 2px 12px rgba(0,0,0,.6)" }}>
         WASTE IN.
       </span>
-      <span className="absolute bottom-4 right-4 sm:bottom-6 sm:right-6 display font-bold text-lg sm:text-2xl" style={{ color: "#A3E635", textShadow: "0 2px 12px rgba(0,0,0,.6)" }}>
+      <span className="absolute bottom-4 right-4 sm:bottom-6 sm:right-6 display font-bold text-lg sm:text-2xl" style={{ color: "#3D8FDB", textShadow: "0 2px 12px rgba(0,0,0,.6)" }}>
         FUEL OUT.
       </span>
 
       {/* handle */}
       <div className="absolute top-0 bottom-0" style={{ left: `${pos}%`, transform: "translateX(-50%)" }}>
-        <div className="absolute top-0 bottom-0 w-0.5" style={{ background: "#A3E635" }} />
+        <div className="absolute top-0 bottom-0 w-0.5" style={{ background: "#3D8FDB" }} />
         <div className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-11 h-11 rounded-full grid place-items-center btn-accent shadow-lg">
           <span className="display font-bold text-sm">⟷</span>
         </div>
