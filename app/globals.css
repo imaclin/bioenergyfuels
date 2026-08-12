@@ -51,6 +51,65 @@ body {
 }
 
 ::selection { background:var(--accent); color:var(--accentInk); }
+
+/* ---- Story chapters (About) -------------------------------------------
+   The narrative sections hang on a left rail that draws itself with scroll
+   (components/story-rail.tsx sets --rail per section). The rail breaks on
+   purpose at the carbon band: the hard question interrupts the story. */
+.rail-track { position:relative; }
+.rail-track::before {
+  content:""; position:absolute; left:19px; top:3.4rem; bottom:.5rem; width:2px;
+  background:var(--line);
+}
+.rail-track::after {
+  content:""; position:absolute; left:19px; top:3.4rem; bottom:.5rem; width:2px;
+  background:var(--accent); transform-origin:top;
+  transform:scaleY(var(--rail, 0));
+}
+.rail-chip {
+  position:relative; z-index:1; width:40px; height:40px; border-radius:999px;
+  display:flex; align-items:center; justify-content:center;
+  font-size:.8rem; font-weight:700; letter-spacing:.05em;
+  border:2px solid var(--line); background:var(--bg); color:var(--muted);
+  transition:border-color .5s, color .5s, background .5s;
+}
+.rail-lit .rail-chip { border-color:var(--accent); color:var(--accentText); }
+
+/* Key phrases underline themselves as their paragraph reveals */
+.ink-draw {
+  background-image:linear-gradient(var(--accent), var(--accent));
+  background-repeat:no-repeat; background-position:0 100%;
+  background-size:0% 2px; padding-bottom:2px;
+  transition:background-size 1.1s cubic-bezier(.2,.7,.2,1) .45s;
+}
+.reveal.in .ink-draw { background-size:100% 2px; }
+
+/* Carbon band — stays dark in both themes; the inverse of .lab-band */
+.carbon-band {
+  background:#0A0B0C; color:#F2F4EF;
+  --bg:#0A0B0C; --text:#F2F4EF; --muted:#979c92; --line:rgba(255,255,255,.12);
+  --accent:#3D8FDB; --accentText:#3D8FDB; --logo:#3D8FDB;
+}
+.carbon-band .glow-q {
+  position:absolute; inset:0; pointer-events:none;
+  background:radial-gradient(55% 60% at 78% 8%, rgba(61,143,219,.14), transparent 70%);
+}
+.quote-mark {
+  position:absolute; top:-1.2rem; left:-0.6rem; font-size:11rem; line-height:1;
+  color:var(--accentText); opacity:.14; pointer-events:none; user-select:none;
+}
+
+/* Process flow (How it works): marching dashes run once the block reveals */
+.flow-line { stroke:var(--accentText); stroke-width:2; fill:none;
+  stroke-dasharray:6 8; animation:flow-march 1.1s linear infinite paused; opacity:.7; }
+.reveal.in ~ * .flow-line, .reveal.in .flow-line { animation-play-state:running; }
+@keyframes flow-march { to { stroke-dashoffset:-14; } }
+.flow-node { border:1px solid var(--line); background:var(--surface); }
+
 @media (prefers-reduced-motion: reduce) {
   .reveal { transition:none; opacity:1; transform:none; }
+  .rail-track::after { transform:scaleY(1); }
+  .rail-lit .rail-chip, .rail-chip { transition:none; }
+  .ink-draw { transition:none; background-size:100% 2px; }
+  .flow-line { animation:none; }
 }
