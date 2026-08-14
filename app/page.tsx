@@ -68,7 +68,7 @@ export default function Home() {
           </p>
           <div className="reveal mt-9 flex flex-wrap gap-3">
             <a href={`mailto:${SITE.email}`} className="btn-accent display font-semibold px-7 py-3.5 rounded-full hover:opacity-90 transition">
-              Email us
+              Contact us
             </a>
             <Link href="/technology" className="display font-semibold px-7 py-3.5 rounded-full border line hover:bg-[color:var(--surface)] transition">
               See the technology →
@@ -264,7 +264,7 @@ export default function Home() {
           <div className="lg:col-span-1">
             <div className="reveal eyebrow acc mb-4">CREDIBILITY</div>
             <h2 className="reveal display font-bold text-4xl sm:text-5xl leading-tight">Backed by real science.</h2>
-            <a href={`mailto:${SITE.email}`} className="reveal inline-block mt-6 btn-accent display font-semibold px-6 py-3 rounded-full">Email us</a>
+            <a href={`mailto:${SITE.email}`} className="reveal inline-block mt-6 btn-accent display font-semibold px-6 py-3 rounded-full">Contact us</a>
           </div>
           <div className="lg:col-span-2 grid sm:grid-cols-2 gap-4">
             <div className="reveal sm:row-span-3 surface rounded-2xl border line overflow-hidden flex flex-col">

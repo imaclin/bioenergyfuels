@@ -27,7 +27,7 @@ export function Nav() {
             href={`mailto:${SITE.email}`}
             className="btn-accent display text-sm font-semibold px-5 py-2.5 rounded-full hover:opacity-90 transition"
           >
-            Email us
+            Contact us
           </a>
         </div>
       </nav>
