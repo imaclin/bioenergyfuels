@@ -37,6 +37,60 @@ const METALS: [string, string, string, string][] = [
   ["Chromium", "0.83 mg/kg", "0.22 mg/kg", "73.5%"],
 ];
 
+// The four catalyst papers we host as PDFs. Citations transcribed from the
+// title page of each file, not from the filenames, which had been mangled by
+// the old site's uploader.
+const DOWNLOADS = [
+  {
+    title: "Reformulated Red Mud: a Robust Catalyst for In Situ Catalytic Pyrolysis of Biomass",
+    authors: "F. A. Agblevor, H. Wang, S. Beis, K. Christian, A. Slade, O. Hietsoi, D. M. Santosa",
+    journal: "Energy & Fuels",
+    year: "2020",
+    cite: "34, 3272–3283",
+    doi: "10.1021/acs.energyfuels.9b04015",
+    file: "reformulated-red-mud-robust-catalyst.pdf",
+    size: "3.9 MB",
+    pages: 12,
+    note: "The catalyst survives repeated regeneration without losing activity.",
+  },
+  {
+    title: "Catalytic Pyrolysis of Cellulose Using Formulated Red Mud, Sand, and HZSM-5",
+    authors: "Hamza Abdellaoui, Foster A. Agblevor, Sohrab Haghighi Mood",
+    journal: "Energy & Fuels",
+    year: "2024",
+    cite: "38, 426–439",
+    doi: "10.1021/acs.energyfuels.3c03304",
+    file: "catalytic-pyrolysis-cellulose-red-mud-sand-hzsm5.pdf",
+    size: "2.7 MB",
+    pages: 14,
+    note: "Red mud against HZSM-5 on pure cellulose, product by product.",
+  },
+  {
+    title: "Catalytic Pyrolysis of Pinyon–Juniper Using Red Mud and HZSM-5",
+    authors: "Bhuvanesh K. Yathavan, F. A. Agblevor",
+    journal: "Energy & Fuels",
+    year: "2013",
+    cite: "27, 6858–6865",
+    doi: "10.1021/ef401853a",
+    file: "catalytic-pyrolysis-pinyon-juniper-red-mud-hzsm5.pdf",
+    size: "1.3 MB",
+    pages: 8,
+    note: "Oils half the viscosity of the zeolite route, at a higher heating value.",
+  },
+  {
+    title: "Upgrading of pinyon-juniper catalytic pyrolysis oil via hydrodeoxygenation",
+    authors: "Hossein Jahromi, Foster A. Agblevor",
+    journal: "Energy",
+    year: "2017",
+    cite: "141, 2186–2195",
+    doi: "10.1016/j.energy.2017.11.149",
+    file: "hydrodeoxygenation-upgrading-pinyon-juniper.pdf",
+    size: "810 KB",
+    pages: 10,
+    note: "Oxygen driven to zero and heating value raised from 27.6 to 45.6 MJ/kg.",
+  },
+];
+
 const PAPERS = [
   "Pyrolytic Conversion of Olive Mill Wastewater Sludge to Biofuels Using Red Mud as Catalyst",
   "Aqueous-Phase Synthesis of Hydrocarbons from Furfural Reactions with Low-Molecular-Weight Biomass Oxygenates",
@@ -54,7 +108,25 @@ export default function ResearchPage() {
       <JsonLd
         data={[
           breadcrumbSchema("Research", "/research"),
-          itemListSchema("BioEnergy Fuels peer-reviewed publications", PAPERS),
+          itemListSchema("BioEnergy Fuels peer-reviewed publications", [
+            ...DOWNLOADS.map((p) => p.title),
+            ...PAPERS,
+          ]),
+          // The hosted PDFs, so the papers are findable as scholarly works
+          // rather than as four anonymous file links.
+          ...DOWNLOADS.map((p) => ({
+            "@context": "https://schema.org",
+            "@type": "ScholarlyArticle",
+            name: p.title,
+            author: p.authors.split(", ").map((a) => ({ "@type": "Person", name: a })),
+            isPartOf: { "@type": "Periodical", name: p.journal },
+            datePublished: p.year,
+            pagination: p.cite,
+            identifier: `https://doi.org/${p.doi}`,
+            url: `${SITE.url}/research/${p.file}`,
+            encodingFormat: "application/pdf",
+            isAccessibleForFree: true,
+          })),
         ]}
       />
       <PageHeader
@@ -120,10 +192,67 @@ export default function ResearchPage() {
         </div>
       </section>
 
+      {/* THE PAPERS — the four catalyst studies, hosted as PDFs */}
+      <section className="max-w-7xl mx-auto px-5 py-20">
+        <div className="reveal eyebrow acc mb-4">READ THE PAPERS</div>
+        <h2 className="reveal display font-bold text-3xl sm:text-4xl leading-tight max-w-2xl">
+          The catalyst research, in full.
+        </h2>
+        <p className="reveal mt-5 max-w-2xl leading-relaxed" style={{ color: "var(--muted)" }}>
+          Four peer-reviewed studies on the formulated red-mud catalyst, published in{" "}
+          <em>Energy &amp; Fuels</em> and <em>Energy</em> between 2013 and 2024. Free to
+          download, no form to fill in.
+        </p>
+
+        <div className="grid md:grid-cols-2 gap-4 mt-10">
+          {DOWNLOADS.map((p) => (
+            <a
+              key={p.file}
+              href={`/research/${p.file}`}
+              target="_blank"
+              rel="noopener"
+              className="reveal group surface rounded-2xl border line p-6 flex flex-col transition-colors"
+              style={{ borderColor: "var(--line)" }}
+            >
+              <div className="flex items-start justify-between gap-4">
+                <span className="eyebrow acc">{p.journal.toUpperCase()} · {p.year}</span>
+                {/* The download affordance. aria-hidden because the link text
+                    below already says what this does. */}
+                <span aria-hidden className="acc display font-bold text-lg leading-none transition-transform group-hover:translate-y-0.5">
+                  ↓
+                </span>
+              </div>
+
+              <h3 className="display font-semibold text-lg leading-snug mt-4 group-hover:underline decoration-1 underline-offset-4">
+                {p.title}
+              </h3>
+
+              <p className="text-sm mt-3 leading-relaxed" style={{ color: "var(--muted)" }}>
+                {p.note}
+              </p>
+
+              <p className="text-xs mt-4 leading-relaxed" style={{ color: "var(--muted)" }}>
+                {p.authors}
+              </p>
+
+              <div className="mt-auto pt-5 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs" style={{ color: "var(--muted)" }}>
+                <span className="display font-semibold acc">Download PDF</span>
+                <span aria-hidden>·</span>
+                <span className="tabular-nums">{p.pages} pages</span>
+                <span aria-hidden>·</span>
+                <span className="tabular-nums">{p.size}</span>
+                <span aria-hidden>·</span>
+                <span className="tabular-nums">doi:{p.doi}</span>
+              </div>
+            </a>
+          ))}
+        </div>
+      </section>
+
       <section className="max-w-7xl mx-auto px-5 py-20">
         <div className="grid lg:grid-cols-3 gap-10 items-start">
           <div className="lg:col-span-2">
-            <div className="reveal eyebrow acc mb-8">SELECTED PUBLICATIONS</div>
+            <div className="reveal eyebrow acc mb-8">FURTHER PUBLICATIONS</div>
             <ul className="divide-y line">
               {PAPERS.map((p) => (
                 <li key={p} className="reveal py-5 flex gap-4 items-baseline">
